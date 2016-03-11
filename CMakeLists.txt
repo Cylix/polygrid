@@ -27,22 +27,28 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -W -Wall -Wextra")
 ###
 # variables
 ###
-set(DEPS_FOLDER ${PROJECT_SOURCE_DIR}/deps)
+set(DEPS_FOLDER ${PROJECT_SOURCE_DIR}/deps/build)
+
 set(GTEST_INCLUDES ${DEPS_FOLDER}/gtest/include)
 set(GTEST_LIBS ${DEPS_FOLDER}/gtest/lib)
+
+set(OPENCV_INCLUDES ${DEPS_FOLDER}/opencv/include)
+set(OPENCV_LIBS ${DEPS_FOLDER}/opencv/lib)
+
 set(POLYGRID_INCLUDES ${PROJECT_SOURCE_DIR}/include)
 
 
 ###
 # includes
 ###
-include_directories(${POLYGRID_INCLUDES})
+include_directories(${POLYGRID_INCLUDES}
+                    ${OPENCV_INCLUDES})
 
 
 ###
 # link
 ###
-link_directories(${GTEST_LIBS})
+link_directories(${OPENCV_LIBS})
 
 
 ###

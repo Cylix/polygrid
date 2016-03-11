@@ -16,7 +16,15 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 ###
 include_directories(SYSTEM ${PROJECT_SOURCE_DIR}/includes
                     ${POLYGRID_INCLUDES}
-                    ${GTEST_INCLUDES})
+                    ${GTEST_INCLUDES}
+                    ${OPENCV_INCLUDES})
+
+
+###
+# link
+###
+link_directories(${GTEST_LIBS}
+                 ${OPENCV_LIBS})
 
 
 ###
