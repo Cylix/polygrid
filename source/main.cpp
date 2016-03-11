@@ -1,4 +1,4 @@
-#include <polygrid/polygrid.hpp>
+#include <polygrid/polygrid>
 #include <vector>
 
 template <typename T>
