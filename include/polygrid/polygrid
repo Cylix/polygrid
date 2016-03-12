@@ -4,4 +4,4 @@
 
 #pragma once
 
-#include <polygrid/polygrid.hpp>
+#include <polygrid/grid/polygrid.hpp>
