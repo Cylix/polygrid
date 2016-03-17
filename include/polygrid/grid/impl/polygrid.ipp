@@ -53,9 +53,15 @@ polygrid<ColSize, RowSize>::build(const Container<Point, Allocator>& polygon) {
   while (curr_it != polygon.end()) {
     const auto& curr = *curr_it;
 
-    //! Mark current cell as an edge
+    //! Determine cell position corresponding to the current point
     unsigned int col = curr.x - min_bounds.first / ColSize;
     unsigned int row = curr.y - min_bounds.second / RowSize;
+
+    //! Resize grid if necessary
+    if (row > m_grid.size()) { m_grid.resize(row + 1); }
+    if (col > m_grid[row].size()) { m_grid[row].resize(col + 1); }
+
+    //! Mark current cell as an edge
     this->m_grid[row][col].mark_as_edge();
 
     //! Apply bresenham algorithm between curr and next point
@@ -83,8 +89,8 @@ polygrid<ColSize, RowSize>::bresenham_algorithm(const Point& lhs, const Point& r
   while (not finder.done()) {
     auto next = finder.next();
 
-    unsigned int col = next.first / ColSize;
-    unsigned int row = next.second / RowSize;
+    unsigned int col = next.x / ColSize;
+    unsigned int row = next.y / RowSize;
     this->m_grid[row][col].mark_as_edge();
   }
 }
